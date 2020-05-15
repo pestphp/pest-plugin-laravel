@@ -1,0 +1,55 @@
+{
+    "name": "pestphp/pest-plugin-template",
+    "description": "My awesome plugin",
+    "keywords": [
+        "php",
+        "framework",
+        "pest",
+        "unit",
+        "test",
+        "testing",
+        "plugin"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3",
+        "pestphp/pest": "^0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pest\\PluginName\\": "src/"
+        }
+    },
+    "require-dev": {
+        "ergebnis/phpstan-rules": "^0.14.4",
+        "friendsofphp/php-cs-fixer": "^2.16.3",
+        "phpstan/phpstan": "^0.12.25",
+        "phpstan/phpstan-strict-rules": "^0.12.2",
+        "rector/rector": "^0.7.25",
+        "symfony/var-dumper": "^5.0.8",
+        "thecodingmachine/phpstan-strict-rules": "^0.12.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+    "scripts": {
+        "lint": "rector process src && php-cs-fixer fix -v",
+        "test:lint": "php-cs-fixer fix -v --dry-run && rector process src --dry-run",
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": "pest --colors=always",
+        "test": [
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ]
+    },
+    "repositories": {
+        "pest": {
+            "type": "vcs",
+            "url": "https://github.com/pestphp/pest"
+        }
+    }
+}
