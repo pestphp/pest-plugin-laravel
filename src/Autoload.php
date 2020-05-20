@@ -3,6 +3,7 @@
 (static function () {
     $files = [
         'InteractsWithAuthentication.php',
+        'InteractsWithDatabase.php',
     ];
 
     foreach ($files as $file) {
