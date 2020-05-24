@@ -11,6 +11,8 @@
 ------
 **Pest** is an elegant PHP Testing Framework with a focus on simplicity. It was carefully crafted to bring the joy of testing to PHP.
 
+> **Note:** This repository contains the Pest's Laravel plugin. If you want to start testing your application with Pest, visit the main [Pest repository](https://github.com/pestphp/pest).
+
 - Explore the docs: **[pestphp.com »](https://pestphp.com)**
 - Follow us on Twitter: **[@pestphp »](https://twitter.com/pestphp)**
 - Join us on the Discord Server: **[discord.gg/bMAJv82 »](https://discord.gg/bMAJv82)**
