@@ -2,8 +2,14 @@
 
 (static function () {
     $files = [
-        'InteractsWithAuthentication.php',
-        'InteractsWithDatabase.php',
+        'Authentication.php',
+        'Console.php',
+        'Container.php',
+        'Database.php',
+        'ExceptionHandling.php',
+        'Http.php',
+        'MocksApplicationServices.php',
+        'Session.php',
     ];
 
     foreach ($files as $file) {

@@ -14,12 +14,23 @@
     "require": {
         "php": "^7.3",
         "laravel/framework": "^7.0",
-        "pestphp/pest": "^0.1.2"
+        "pestphp/pest": "@dev"
     },
     "autoload": {
-        "files": ["src/Autoload.php"]
+        "psr-4": {
+            "Pest\\Laravel\\": "src/"
+        },
+        "files": [
+            "src/Autoload.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     },
     "require-dev": {
+        "orchestra/testbench": "^5.2",
         "friendsofphp/php-cs-fixer": "^2.16.3",
         "phpstan/phpstan": "^0.12.25",
         "rector/rector": "^0.7.25",
@@ -45,8 +56,8 @@
     },
     "repositories": {
         "pest": {
-            "type": "vcs",
-            "url": "https://github.com/pestphp/pest"
+            "type": "path",
+            "url": "../pest"
         }
     }
 }
