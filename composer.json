@@ -14,7 +14,7 @@
     "require": {
         "php": "^7.3",
         "laravel/framework": "^7.0",
-        "pestphp/pest": "@dev"
+        "pestphp/pest": "^0.2"
     },
     "autoload": {
         "psr-4": {
@@ -53,11 +53,5 @@
             "@test:types",
             "@test:unit"
         ]
-    },
-    "repositories": {
-        "pest": {
-            "type": "path",
-            "url": "../pest"
-        }
     }
 }
