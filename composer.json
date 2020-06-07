@@ -53,5 +53,10 @@
             "@test:types",
             "@test:unit"
         ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2.x-dev"
+        }
     }
 }
