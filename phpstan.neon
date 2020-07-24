@@ -6,3 +6,5 @@ parameters:
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: true
+    ignoreErrors:
+        - '#Illuminate\\Foundation\\Testing\\Wormhole#'

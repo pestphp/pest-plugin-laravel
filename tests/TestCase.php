@@ -18,7 +18,6 @@ class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $this->withFactories(__DIR__ . '/../resources/factories');
         $this->loadMigrationsFrom(__DIR__ . '/../resources/database/migrations');
         $this->artisan('migrate', ['--database' => 'testbench'])->run();
     }

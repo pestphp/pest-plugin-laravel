@@ -10,6 +10,7 @@
         'Http.php',
         'MocksApplicationServices.php',
         'Session.php',
+        'Time.php',
     ];
 
     foreach ($files as $file) {

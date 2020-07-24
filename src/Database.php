@@ -87,7 +87,7 @@ function getConnection(string $connection = null): Connection
  *
  * @return TestCase
  */
-function seed($class = 'DatabaseSeeder')
+function seed($class = 'Database\\Seeders\\DatabaseSeeder')
 {
     return test()->seed(...func_get_args());
 }
