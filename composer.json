@@ -14,7 +14,7 @@
     "require": {
         "php": "^7.3",
         "laravel/framework": "^7.0|^8.0",
-        "pestphp/pest": "^0.2"
+        "pestphp/pest": "^0.3"
     },
     "autoload": {
         "psr-4": {
