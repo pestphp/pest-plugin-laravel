@@ -12,8 +12,8 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3",
-        "laravel/framework": "^7.0|^8.0",
+        "php": "^7.3 || ^8.0",
+        "laravel/framework": "^7.0 || ^8.0",
         "pestphp/pest": "^0.3"
     },
     "autoload": {
@@ -30,7 +30,7 @@
         }
     },
     "require-dev": {
-        "orchestra/testbench": "^5.2|^6.0",
+        "orchestra/testbench": "^5.2 || ^6.0",
         "pestphp/pest-dev-tools": "dev-master"
     },
     "minimum-stability": "dev",
