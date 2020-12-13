@@ -6,9 +6,6 @@
     <testsuites>
         <testsuite name="default">
             <directory suffix=".php">./tests</directory>
-            <exclude>
-                <directory suffix=".blade.php">./tests/views</directory>
-            </exclude>
         </testsuite>
     </testsuites>
     <filter>
