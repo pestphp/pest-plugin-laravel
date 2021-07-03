@@ -10,6 +10,7 @@
         'Http.php',
         'MocksApplicationServices.php',
         'Session.php',
+        'Support.php',
         'Time.php',
     ];
 
