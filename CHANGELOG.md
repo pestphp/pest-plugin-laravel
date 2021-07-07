@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v1.1.0 (2021-07-07)](https://github.com/pestphp/pest-plugin-laravel/compare/v1.0.0...v1.1.0)
+
+- Add `toBeCollection()` expectation ([#13](https://github.com/pestphp/pest-plugin-laravel/pull/13))
+
 ## [v1.0.0 (2021-01-03)](https://github.com/pestphp/pest-plugin-laravel/compare/v0.3.0...v1.0.0)
 ### Changed
 - Stable version
