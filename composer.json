@@ -26,6 +26,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "App\\": "resources/app/",
             "Tests\\": "tests/"
         }
     },
