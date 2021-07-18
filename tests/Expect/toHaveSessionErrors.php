@@ -44,3 +44,7 @@ test('not failure', function () {
 test('failure if the error key is incorrect', function () {
     expect(post($this->route, array_merge($this->invalidData, ['name' => 'Elyneker'])))->toHaveSessionErrors('name');
 })->throws(ExpectationFailedException::class);
+
+test('failure if object is not instance of TestRequest', function() {
+    expect(123)->toHaveSessionErrors();
+})->throws(ExpectationFailedException::class);
