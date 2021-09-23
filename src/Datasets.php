@@ -14,11 +14,11 @@ use Illuminate\Support\Arr;
  *
  * @template TValue
  *
- * @param Closure(Application): TValue $callback
+ * @param Closure(Application): mixed $callback
  *
- * @return TValue
+ * @return void
  */
-function laravelDataset(Closure $callback)
+function laravelDataset(string $name, Closure $callback)
 {
     $traitsToTry = [
         'Tests\\CreatesApplication',
@@ -40,5 +40,5 @@ function laravelDataset(Closure $callback)
     }
 
     /* @phpstan-ignore-next-line  */
-    return $callback($factory->createApplication());
+    dataset($name, $callback($factory->createApplication()));
 }

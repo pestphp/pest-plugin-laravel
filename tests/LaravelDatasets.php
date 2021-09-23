@@ -6,10 +6,7 @@ use function Pest\Laravel\laravelDataset;
 
 $GLOBALS['testCount'] = 0;
 
-it('can build a dataset that has full access to the Laravel framework', function (string $data) {
-    expect($data)->toBeIn(['foo', 'bar']);
-    $GLOBALS['testCount']++;
-})->with(laravelDataset(function ($app) {
+laravelDataset('laravel-dataset-testing', function ($app) {
     expect($app)->toBeInstanceOf(Application::class);
 
     // Test facades don't throw errors
@@ -18,7 +15,12 @@ it('can build a dataset that has full access to the Laravel framework', function
     });
 
     return ['foo', 'bar'];
-}));
+});
+
+it('can build a dataset that has full access to the Laravel framework', function (string $data) {
+    expect($data)->toBeIn(['foo', 'bar']);
+    $GLOBALS['testCount']++;
+})->with('laravel-dataset-testing');
 
 afterAll(function () {
     expect($GLOBALS['testCount'])->toBe(2);
