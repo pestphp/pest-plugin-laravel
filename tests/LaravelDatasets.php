@@ -18,7 +18,7 @@ laravelDataset('laravel-dataset-testing', function ($app) {
 });
 
 it('can build a dataset that has full access to the Laravel framework', function (string $data) {
-    expect($data)->toBeIn(['foo', 'bar']);
+    expect(['foo', 'bar'])->toContain($data);
     $GLOBALS['testCount']++;
 })->with('laravel-dataset-testing');
 
