@@ -26,12 +26,12 @@ test('failures', function () {
 
     $user->delete();
 
-    expect($user)->toExist();
-})->throws(ExpectationFailedException::class)
-    ->skip(
-        !method_exists(TestCase::class, 'assertModelExistss'),
-        'assertModelExist not supported for this laravel version'
-    )->only();
+    expect(expect($user)->toExist())->toThrow(ExpectationFailedException::class);
+
+})->skip(
+    !method_exists(TestCase::class, 'assertModelExistss'),
+    'assertModelExist not supported for this laravel version'
+);
 
 test('not failures', function () {
     $user = User::create([
@@ -40,9 +40,8 @@ test('not failures', function () {
         'password' => Hash::make('password'),
     ]);
 
-    expect($user)->not->toExist();
-})->throws(ExpectationFailedException::class)
-    ->skip(
-        !method_exists(TestCase::class, 'assertModelExists'),
-        'assertModelExist not supported for this laravel version'
-    );
+    expect(expect($user)->not->toExist())->toThrow(ExpectationFailedException::class);
+})->skip(
+    !method_exists(TestCase::class, 'assertModelExists'),
+    'assertModelExist not supported for this laravel version'
+);
