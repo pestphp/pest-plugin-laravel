@@ -19,10 +19,6 @@ test('pass', function () {
 });
 
 test('failures', function () {
-    if (!method_exists(TestCase::class, 'assertModelExists')) {
-        $this->markTestSkipped('assertModelExist not supported for this laravel version');
-    }
-
     $user = User::create([
         'name'     => 'test user',
         'email'    => 'email@test.xx',
@@ -32,13 +28,13 @@ test('failures', function () {
     $user->delete();
 
     expect($user)->toExist();
-})->throws(ExpectationFailedException::class);
+})->throws(ExpectationFailedException::class)
+    ->skip(
+        !method_exists(TestCase::class, 'assertModelExists'),
+        'assertModelExist not supported for this laravel version'
+    );
 
 test('not failures', function () {
-    if (!method_exists(TestCase::class, 'assertModelExists')) {
-        $this->markTestSkipped('assertModelExist not supported for this laravel version');
-    }
-
     $user = User::create([
         'name'     => 'test user',
         'email'    => 'email@test.xx',
@@ -46,4 +42,8 @@ test('not failures', function () {
     ]);
 
     expect($user)->not->toExist();
-})->throws(ExpectationFailedException::class);
+})->throws(ExpectationFailedException::class)
+    ->skip(
+        !method_exists(TestCase::class, 'assertModelExists'),
+        'assertModelExist not supported for this laravel version'
+    );
