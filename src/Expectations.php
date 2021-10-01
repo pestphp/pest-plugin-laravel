@@ -18,7 +18,9 @@ expect()->extend('toBeCollection', function (): Expectation {
  * Asserts the given model exists in the database.
  */
 expect()->extend('toExist', function (): Expectation {
+    // @phpstan-ignore-next-line
     assertModelExists($this->value);
 
+    // @phpstan-ignore-next-line
     return $this;
 });
