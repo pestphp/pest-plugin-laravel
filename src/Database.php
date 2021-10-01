@@ -35,16 +35,7 @@ function assertDatabaseMissing(string $table, array $data, string $connection = 
  */
 function assertModelExists(Model $model)
 {
-    /*
-     * had to use this instead of test()->assertModelExists($model)
-     * in order to support laravel 7, could be replaced after
-     * composer.json requirements for laravel 7 are dropped
-     */
-    return test()->assertDatabaseHas(
-        $model->getTable(),
-        [$model->getKeyName() => $model->getKey()],
-        $model->getConnectionName()
-    );
+    return test()->assertModelExists($model);
 }
 
 /**
@@ -54,16 +45,7 @@ function assertModelExists(Model $model)
  */
 function assertModelMissing(Model $model)
 {
-    /*
-     * had to use this instead of test()->assertModelMissing($model)
-     * in order to support laravel 7, could be replaced after
-     * composer.json requirements for laravel 7 are dropped
-     */
-    return test()->assertDatabaseMissing(
-        $model->getTable(),
-        [$model->getKeyName() => $model->getKey()],
-        $model->getConnectionName()
-    );
+    return test()->assertModelMissing($model);
 }
 
 /**
