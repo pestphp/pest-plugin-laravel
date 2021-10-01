@@ -29,6 +29,44 @@ function assertDatabaseMissing(string $table, array $data, string $connection = 
 }
 
 /**
+ * Assert the given model exists in the database.
+ *
+ * @return TestCase
+ */
+function assertModelExists(Model $model)
+{
+    /*
+     * had to use this instead of test()->assertModelExists($model)
+     * in order to support laravel 7, could be replaced after
+     * composer.json requirements for laravel 7 are dropped
+     */
+    return test()->assertDatabaseHas(
+        $model->getTable(),
+        [$model->getKeyName() => $model->getKey()],
+        $model->getConnectionName()
+    );
+}
+
+/**
+ * Assert the given model does not exist in the database.
+ *
+ * @return TestCase
+ */
+function assertModelMissing(Model $model)
+{
+    /*
+     * had to use this instead of test()->assertModelMissing($model)
+     * in order to support laravel 7, could be replaced after
+     * composer.json requirements for laravel 7 are dropped
+     */
+    return test()->assertDatabaseMissing(
+        $model->getTable(),
+        [$model->getKeyName() => $model->getKey()],
+        $model->getConnectionName()
+    );
+}
+
+/**
  * Assert the count of table entries.
  *
  * @return TestCase
