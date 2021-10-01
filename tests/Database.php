@@ -4,10 +4,15 @@ use function Pest\Laravel\assertDatabaseMissing;
 use function Pest\Laravel\assertModelExists;
 use function Pest\Laravel\assertModelMissing;
 use Tests\Models\User;
+use Tests\TestCase;
 
 assertDatabaseMissing('users', ['id' => 1]);
 
 test('assert model missing', function () {
+    if (!method_exists(TestCase::class, 'assertModelExists')) {
+        $this->markTestSkipped('assertModelExist not supported for this laravel version');
+    }
+
     $user = User::make([
         'name'     => 'test user',
         'email'    => 'email@test.xx',
@@ -16,11 +21,13 @@ test('assert model missing', function () {
     $user->id = 1;
 
     assertModelMissing($user);
-})->skip(function () {
-    return substr(\Illuminate\Support\Facades\App::version(), 0, 2) == '7.';
-}, 'assertModelExist not supported in laravel 7');
+});
 
 test('assert model exists', function () {
+    if (!method_exists(TestCase::class, 'assertModelExists')) {
+        $this->markTestSkipped('assertModelExist not supported for this laravel version');
+    }
+
     $user = User::create([
         'name'     => 'test user',
         'email'    => 'email@test.xx',
@@ -28,6 +35,4 @@ test('assert model exists', function () {
     ]);
 
     assertModelExists($user);
-})->skip(function () {
-    return substr(\Illuminate\Support\Facades\App::version(), 0, 2) == '7.';
-}, 'assertModelExist not supported in laravel 7');
+});
