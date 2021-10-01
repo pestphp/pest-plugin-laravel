@@ -14,7 +14,7 @@ expect()->extend('toBeCollection', function (): Expectation {
     return $this->toBeInstanceOf(\Illuminate\Support\Collection::class);
 });
 
-/**
+/*
  * Asserts that the given where condition exists in the database
  *
  * @param \Illuminate\Database\Eloquent\Model|string $table
