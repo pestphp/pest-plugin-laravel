@@ -5,10 +5,6 @@ use Tests\Models\User;
 use Tests\TestCase;
 
 test('pass', function () {
-    if (!method_exists(TestCase::class, 'assertModelExists')) {
-        $this->markTestSkipped('assertModelExist not supported for this laravel version');
-    }
-
     $user = User::create([
         'name'     => 'test user',
         'email'    => 'email@test.xx',
@@ -16,7 +12,10 @@ test('pass', function () {
     ]);
 
     expect($user)->toExist();
-});
+})->skip(
+    !method_exists(TestCase::class, 'assertModelExistss'),
+    'assertModelExist not supported for this laravel version'
+);
 
 test('failures', function () {
     $user = User::create([
@@ -30,9 +29,9 @@ test('failures', function () {
     expect($user)->toExist();
 })->throws(ExpectationFailedException::class)
     ->skip(
-        !method_exists(TestCase::class, 'assertModelExists'),
+        !method_exists(TestCase::class, 'assertModelExistss'),
         'assertModelExist not supported for this laravel version'
-    );
+    )->only();
 
 test('not failures', function () {
     $user = User::create([
