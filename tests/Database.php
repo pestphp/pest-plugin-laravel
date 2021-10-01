@@ -17,8 +17,8 @@ test('assert model missing', function () {
 
     assertModelMissing($user);
 })->skip(function () {
-    Str::startsWith(app()->version(), '7');
-}, 'assertModelMissing not supported in laravel 7');
+    return substr(app()->version(), 0, 2) == '7.';
+}, 'assertModelExist not supported in laravel 7');
 
 test('assert model exists', function () {
     $user = User::create([
@@ -29,5 +29,5 @@ test('assert model exists', function () {
 
     assertModelExists($user);
 })->skip(function () {
-    Str::startsWith(app()->version(), '7');
+    return substr(app()->version(), 0, 2) == '7.';
 }, 'assertModelExist not supported in laravel 7');
