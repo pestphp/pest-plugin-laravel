@@ -13,3 +13,15 @@ expect()->extend('toBeCollection', function (): Expectation {
     // @phpstan-ignore-next-line
     return $this->toBeInstanceOf(\Illuminate\Support\Collection::class);
 });
+
+/**
+ * Asserts that the given where condition exists in the database
+ *
+ * @param \Illuminate\Database\Eloquent\Model|string $table
+ * @param string|null $connection
+ */
+expect()->extend('toBeInDatabase', function ($table, $connection = null): Expectation {
+    assertDatabaseHas($table, $this->value, $connection);
+
+    return $this;
+});
