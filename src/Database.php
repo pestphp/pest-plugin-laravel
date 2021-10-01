@@ -29,6 +29,26 @@ function assertDatabaseMissing(string $table, array $data, string $connection = 
 }
 
 /**
+ * Assert the given model exists in the database.
+ *
+ * @return TestCase
+ */
+function assertModelExists(Model $model)
+{
+    return test()->assertModelExists($model);
+}
+
+/**
+ * Assert the given model does not exist in the database.
+ *
+ * @return TestCase
+ */
+function assertModelMissing(Model $model)
+{
+    return test()->assertModelMissing($model);
+}
+
+/**
  * Assert the count of table entries.
  *
  * @return TestCase
