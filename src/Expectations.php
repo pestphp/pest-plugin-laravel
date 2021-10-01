@@ -13,3 +13,13 @@ expect()->extend('toBeCollection', function (): Expectation {
     // @phpstan-ignore-next-line
     return $this->toBeInstanceOf(\Illuminate\Support\Collection::class);
 });
+
+
+/*
+ * Asserts the given model exists in the database.
+ */
+expect()->extend('toExist', function (): Expectation {
+    assertModelExists($this->value);
+
+    return $this;
+});
