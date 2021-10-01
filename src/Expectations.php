@@ -14,7 +14,6 @@ expect()->extend('toBeCollection', function (): Expectation {
     return $this->toBeInstanceOf(\Illuminate\Support\Collection::class);
 });
 
-
 /*
  * Asserts the given model exists in the database.
  */
