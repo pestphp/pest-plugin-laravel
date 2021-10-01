@@ -21,7 +21,9 @@ expect()->extend('toBeCollection', function (): Expectation {
  * @param string|null $connection
  */
 expect()->extend('toBeInDatabase', function ($table, $connection = null): Expectation {
+    // @phpstan-ignore-next-line
     assertDatabaseHas($table, $this->value, $connection);
 
+    // @phpstan-ignore-next-line
     return $this;
 });
