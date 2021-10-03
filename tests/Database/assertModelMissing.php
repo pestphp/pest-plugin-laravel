@@ -1,29 +1,11 @@
 <?php
 
-use function Pest\Laravel\assertDatabaseMissing;
 use function Pest\Laravel\assertModelExists;
-use function Pest\Laravel\assertModelMissing;
+use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\User;
 use Tests\TestCase;
 
-assertDatabaseMissing('users', ['id' => 1]);
-
-test('assert model missing', function () {
-    if (!method_exists(TestCase::class, 'assertModelExists')) {
-        $this->markTestSkipped('assertModelExist not supported for this laravel version');
-    }
-
-    $user = User::make([
-        'name'     => 'test user',
-        'email'    => 'email@test.xx',
-        'password' => Hash::make('password'),
-    ]);
-    $user->id = 1;
-
-    assertModelMissing($user);
-});
-
-test('assert model exists', function () {
+test('pass', function () {
     if (!method_exists(TestCase::class, 'assertModelExists')) {
         $this->markTestSkipped('assertModelExist not supported for this laravel version');
     }
@@ -36,3 +18,17 @@ test('assert model exists', function () {
 
     assertModelExists($user);
 });
+
+test('fails', function () {
+    if (!method_exists(TestCase::class, 'assertModelExists')) {
+        throw new ExpectationFailedException('assertModelExist not supported for this laravel version');
+    }
+
+    $user = User::make([
+        'name'     => 'test user',
+        'email'    => 'email@test.xx',
+        'password' => Hash::make('password'),
+    ]);
+
+    assertModelExists($user);
+})->throws(ExpectationFailedException::class);
