@@ -21,7 +21,7 @@ test('pass', function () {
 
 test('fails', function () {
     if (!method_exists(TestCase::class, 'assertModelExists')) {
-        $this->markTestSkipped('assertModelExist not supported for this laravel version');
+        throw new ExpectationFailedException("'assertModelExist not supported for this laravel version'");
     }
 
     $user = SoftDeletableUser::create([
