@@ -83,6 +83,18 @@ function assertSoftDeleted($table, array $data = [], string $connection = null, 
 }
 
 /**
+ * Assert the given record has not been "soft deleted".
+ *
+ * @param Model|string $table
+ *
+ * @return TestCase
+ */
+function assertNotSoftDeleted($table, array $data = [], string $connection = null, string $deletedAtColumn = 'deleted_at')
+{
+    return test()->assertNotSoftDeleted(...func_get_args());
+}
+
+/**
  * Determine if the argument is a soft deletable model.
  *
  * @param mixed $model
