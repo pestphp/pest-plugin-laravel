@@ -1,20 +1,19 @@
 <?php
 
 use Illuminate\Support\Str;
+use Tests\TestCase;
 use function Pest\Laravel\assertDeleted;
 use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\User;
 
 test('pass', function () {
-    dump(app()->version());
-    if (!Str::of(app()->version())->startsWith('8')) {
-        dump('skip');
-        $this->markTestSkipped('Unsupported feature for Laravel ' . app()->version());
+    if (!method_exists(TestCase::class, 'assertDeleted')) {
+        $this->markTestSkipped('assertModelExist not supported for this laravel version');
     }
 
     $user = User::create([
-        'name'     => 'test user',
-        'email'    => 'email@test.xx',
+        'name' => 'test user',
+        'email' => 'email@test.xx',
         'password' => Hash::make('password'),
     ]);
 
@@ -25,8 +24,8 @@ test('pass', function () {
 
 test('fails', function () {
     $user = User::create([
-        'name'     => 'test user',
-        'email'    => 'email@test.xx',
+        'name' => 'test user',
+        'email' => 'email@test.xx',
         'password' => Hash::make('password'),
     ]);
 
