@@ -6,7 +6,9 @@ use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\User;
 
 test('pass', function () {
+    dump(app()->version());
     if (!Str::of(app()->version())->startsWith('8')) {
+        dump('skip');
         $this->markTestSkipped('Unsupported feature for Laravel ' . app()->version());
     }
 
