@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 test('pass', function () {
     if (!method_exists(TestCase::class, 'assertDeleted')) {
-        $this->markTestSkipped('assertModelExist not supported for this laravel version');
+        $this->markTestSkipped('assertDeleted not supported for this laravel version');
     }
 
     $user = User::create([
