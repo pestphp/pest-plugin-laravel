@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Str;
-use Tests\TestCase;
 use function Pest\Laravel\assertDeleted;
 use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\User;
+use Tests\TestCase;
 
 test('pass', function () {
     if (!method_exists(TestCase::class, 'assertDeleted')) {
@@ -12,8 +11,8 @@ test('pass', function () {
     }
 
     $user = User::create([
-        'name' => 'test user',
-        'email' => 'email@test.xx',
+        'name'     => 'test user',
+        'email'    => 'email@test.xx',
         'password' => Hash::make('password'),
     ]);
 
@@ -23,9 +22,13 @@ test('pass', function () {
 });
 
 test('fails', function () {
+    if (!method_exists(TestCase::class, 'assertDeleted')) {
+        throw new ExpectationFailedException('assertDeleted not supported for this laravel version');
+    }
+
     $user = User::create([
-        'name' => 'test user',
-        'email' => 'email@test.xx',
+        'name'     => 'test user',
+        'email'    => 'email@test.xx',
         'password' => Hash::make('password'),
     ]);
 
