@@ -67,7 +67,7 @@ function assertDatabaseCount(string $table, int $count, string $connection = nul
  */
 function assertDeleted($table, array $data = [], string $connection = null)
 {
-    return test()->assertDeleted(...func_get_args());
+    return test()->assertModelMissing(...func_get_args());
 }
 
 /**
