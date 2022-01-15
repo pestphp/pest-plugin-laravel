@@ -14,7 +14,9 @@ jobs:
 
         excludes:
           - laravel: 9.*
-            php: [ 7.3, 7.4 ]
+            php: 7.3
+          - laravel: 9.*
+            php: 7.4
 
     name: PHP ${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }} - ${{ matrix.dependency-version }}
 
