@@ -1,37 +1,51 @@
 name: Tests
 
-on: ['push', 'pull_request']
+on: [ 'push', 'pull_request' ]
 
 jobs:
   ci:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        php: ['7.3', '7.4', '8.0']
-        dependency-version: [prefer-lowest, prefer-stable]
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+        php: [ 7.3, 7.4, 8.0, 8.1]
+        laravel: [ 7.*, 8.*, 9.* ]
+        dependency-version: [ prefer-lowest, prefer-stable ]
 
-    name: PHP ${{ matrix.php }} - ${{ matrix.os }} - ${{ matrix.dependency-version }}
+        exclude:
+          - laravel: 9.*
+            php: 7.3
+          - laravel: 9.*
+            php: 7.4
+          - laravel: 7.*
+            php: 8.1
+          - laravel: 8.*
+            php: 8.1
+            dependency-version: prefer-lowest
+
+    name: PHP ${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }} - ${{ matrix.dependency-version }}
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-        extensions: pdo_sqlite, fileinfo
-        tools: composer:v2
-        coverage: none
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: pdo_sqlite, fileinfo
+          tools: composer:v2
+          coverage: none
 
-    - name: Setup Problem Matches
-      run: |
-        echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-        echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+      - name: Setup Problem Matches
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
-    - name: Install PHP dependencies
-      run: composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
+      - name: Install PHP dependencies
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
+          composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
 
-    - name: Unit Tests
-      run: ./vendor/bin/pest --colors=always
+      - name: Unit Tests
+        run: ./vendor/bin/pest --colors=always
