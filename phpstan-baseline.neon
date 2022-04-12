@@ -1,0 +1,22 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method Pest\\\\Expectation\\|Pest\\\\Support\\\\Extendable\\:\\:not\\(\\)\\.$#"
+			count: 1
+			path: src/Expectations.php
+
+		-
+			message: "#^Call to an undefined method Pest\\\\Expectation\\|Pest\\\\Support\\\\Extendable\\:\\:toBeTrue\\(\\)\\.$#"
+			count: 1
+			path: src/Expectations.php
+
+		-
+			message: "#^Call to an undefined method Pest\\\\Expectation\\|Pest\\\\Support\\\\Extendable\\:\\:toContainModel\\(\\)\\.$#"
+			count: 1
+			path: src/Expectations.php
+
+		-
+			message: "#^Undefined variable\\: \\$this$#"
+			count: 4
+			path: src/Expectations.php
+
