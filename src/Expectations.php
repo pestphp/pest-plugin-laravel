@@ -35,3 +35,9 @@ expect()->extend('toContainModels', function (...$models): Expectation {
 
     return $this;
 });
+
+expect()->extend('toBeThisModel', function (Model $model): Expectation {
+    expect($this->value->is($model))->toBeTrue();
+
+    return $this;
+});

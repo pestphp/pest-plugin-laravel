@@ -7,7 +7,7 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method Pest\\\\Expectation\\|Pest\\\\Support\\\\Extendable\\:\\:toBeTrue\\(\\)\\.$#"
-			count: 1
+			count: 2
 			path: src/Expectations.php
 
 		-
@@ -17,6 +17,6 @@ parameters:
 
 		-
 			message: "#^Undefined variable\\: \\$this$#"
-			count: 4
+			count: 6
 			path: src/Expectations.php
 
