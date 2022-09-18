@@ -6,7 +6,6 @@ namespace Pest\Laravel\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Pest\Exceptions\InvalidConsoleArgument;
 use Pest\Support\Str;
 use function Pest\testDirectory;
 use Pest\TestSuite;
@@ -33,10 +32,12 @@ final class PestTestCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle(): void
+    public function handle(): int
     {
-        /* @phpstan-ignore-next-line */
-        TestSuite::getInstance(base_path(), $this->option('test-directory'));
+        /** @var string $testDirectory */
+        $testDirectory = $this->option('test-directory');
+
+        TestSuite::getInstance(base_path(), $testDirectory);
 
         /** @var string $name */
         $name = $this->argument('name');
@@ -49,7 +50,6 @@ final class PestTestCommand extends Command
             ucfirst($name)
         );
 
-        /* @phpstan-ignore-next-line */
         $target = base_path($relativePath);
 
         if (! File::isDirectory(dirname((string) $target))) {
@@ -57,11 +57,13 @@ final class PestTestCommand extends Command
         }
 
         if (File::exists($target) && ! (bool) $this->option('force')) {
-            throw new InvalidConsoleArgument(sprintf('%s already exist', $target));
+            $this->components->error(sprintf('[%s] already exist', $target));
+
+            return 1;
         }
 
         $contents = File::get(implode(DIRECTORY_SEPARATOR, [
-            dirname(__DIR__, 3),
+            dirname(__DIR__, 2),
             'stubs',
             sprintf('%s.php', $type),
         ]));
@@ -70,8 +72,10 @@ final class PestTestCommand extends Command
         $name = Str::endsWith($name, 'test') ? mb_substr($name, 0, -4) : $name;
 
         File::put($target, str_replace('{name}', $name, $contents));
-        $message = sprintf('`%s` created successfully.', $relativePath);
+        $message = sprintf('[%s] created successfully.', $relativePath);
 
         $this->output->success($message);
+
+        return 0;
     }
 }

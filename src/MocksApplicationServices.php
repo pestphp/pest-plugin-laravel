@@ -11,8 +11,7 @@ use Illuminate\Foundation\Testing\TestCase;
  *
  * These events will be mocked, so that handlers will not actually be executed.
  *
- * @param array|string $events
- *
+ * @param  array|string  $events
  * @return TestCase
  *
  * @throws \Exception
@@ -27,8 +26,7 @@ function expectsEvents($events)
  *
  * These events will be mocked, so that handlers will not actually be executed.
  *
- * @param array|string $events
- *
+ * @param  array|string  $events
  * @return TestCase
  */
 function doesntExpectEvents($events)
@@ -59,8 +57,7 @@ function getFiredEvents(array $events): array
  *
  * These jobs will be mocked, so that handlers will not actually be executed.
  *
- * @param array|string $jobs
- *
+ * @param  array|string  $jobs
  * @return TestCase
  */
 function expectsJobs($jobs)
@@ -73,8 +70,7 @@ function expectsJobs($jobs)
  *
  * These jobs will be mocked, so that handlers will not actually be executed.
  *
- * @param array|string $jobs
- *
+ * @param  array|string  $jobs
  * @return TestCase
  */
 function doesntExpectJobs($jobs)
@@ -129,8 +125,7 @@ function withoutNotifications()
 /**
  * Specify a notification that is expected to be dispatched.
  *
- * @param mixed $notifiable
- *
+ * @param  mixed  $notifiable
  * @return TestCase
  */
 function expectsNotification($notifiable, string $notification)

@@ -8,6 +8,6 @@ class TestServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/../resources/routes.php');
+        $this->loadRoutesFrom(__DIR__.'/../resources/routes.php');
     }
 }

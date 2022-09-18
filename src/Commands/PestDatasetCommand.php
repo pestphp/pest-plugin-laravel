@@ -36,19 +36,20 @@ final class PestDatasetCommand extends Command
      */
     public function handle(): void
     {
-        /* @phpstan-ignore-next-line */
-        TestSuite::getInstance(base_path(), $this->option('test-directory'));
+        /** @var string $testDirectory */
+        $testDirectory = $this->option('test-directory');
+
+        TestSuite::getInstance(base_path(), $testDirectory);
 
         /** @var string $name */
         $name = $this->argument('name');
 
         $relativePath = sprintf(testDirectory('DatasetsRepository/%s.php'), ucfirst($name));
 
-        /* @phpstan-ignore-next-line */
         $target = base_path($relativePath);
 
         if (File::exists($target)) {
-            throw new InvalidConsoleArgument(sprintf('%s already exist', $target));
+            throw new InvalidConsoleArgument(sprintf('[%s] already exist', $target));
         }
 
         if (! File::exists(dirname($relativePath))) {
@@ -56,7 +57,7 @@ final class PestDatasetCommand extends Command
         }
 
         $contents = File::get(implode(DIRECTORY_SEPARATOR, [
-            dirname(__DIR__, 3),
+            dirname(__DIR__, 2),
             'stubs',
             'Dataset.php',
         ]));
@@ -67,8 +68,8 @@ final class PestDatasetCommand extends Command
         $element = Str::singular($name);
         $contents = str_replace('{dataset_element}', $element, $contents);
         File::put($target, str_replace('{dataset_name}', $name, $contents));
-        $message = sprintf('`%s` created successfully.', $relativePath);
+        $message = sprintf('[%s] created successfully.', $relativePath);
 
-        $this->output->success($message);
+        $this->components->info($message);
     }
 }

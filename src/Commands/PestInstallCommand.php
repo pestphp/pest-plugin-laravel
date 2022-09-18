@@ -7,7 +7,6 @@ namespace Pest\Laravel\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Pest\Console\Thanks;
-use Pest\Exceptions\InvalidConsoleArgument;
 use function Pest\testDirectory;
 use Pest\TestSuite;
 
@@ -40,23 +39,24 @@ final class PestInstallCommand extends Command
      */
     public function handle(): void
     {
-        /* @phpstan-ignore-next-line */
-        TestSuite::getInstance(base_path(), $this->option('test-directory'));
+        /** @var string $testDirectory */
+        $testDirectory = $this->option('test-directory');
 
-        /* @phpstan-ignore-next-line */
+        TestSuite::getInstance(base_path(), $testDirectory);
+
         $pest = base_path(testDirectory('Pest.php'));
 
         if (File::exists($pest)) {
-            throw new InvalidConsoleArgument(sprintf('%s already exist', $pest));
+            $this->components->info('[tests/Pest.php] already exists.');
+        } else {
+            File::copy(implode(DIRECTORY_SEPARATOR, [
+                dirname(__DIR__, 2),
+                self::STUBS,
+                'Pest.php',
+            ]), $pest);
+
+            $this->components->info('[tests/Pest.php] created successfully.');
         }
-
-        File::copy(implode(DIRECTORY_SEPARATOR, [
-            dirname(__DIR__, 3),
-            self::STUBS,
-            'Pest.php',
-        ]), $pest);
-
-        $this->output->success('`tests/Pest.php` created successfully.');
 
         if (! (bool) $this->option('no-interaction')) {
             (new Thanks($this->output))();

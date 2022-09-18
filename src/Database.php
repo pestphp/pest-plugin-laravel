@@ -61,8 +61,7 @@ function assertDatabaseCount(string $table, int $count, string $connection = nul
 /**
  * Assert the given record has been deleted.
  *
- * @param Model|string $table
- *
+ * @param  Model|string  $table
  * @return TestCase
  */
 function assertDeleted($table, array $data = [], string $connection = null)
@@ -73,8 +72,7 @@ function assertDeleted($table, array $data = [], string $connection = null)
 /**
  * Assert the given record has been "soft deleted".
  *
- * @param Model|string $table
- *
+ * @param  Model|string  $table
  * @return TestCase
  */
 function assertSoftDeleted($table, array $data = [], string $connection = null, string $deletedAtColumn = 'deleted_at')
@@ -85,8 +83,7 @@ function assertSoftDeleted($table, array $data = [], string $connection = null, 
 /**
  * Assert the given record has not been "soft deleted".
  *
- * @param Model|string $table
- *
+ * @param  Model|string  $table
  * @return TestCase
  */
 function assertNotSoftDeleted($table, array $data = [], string $connection = null, string $deletedAtColumn = 'deleted_at')
@@ -97,7 +94,7 @@ function assertNotSoftDeleted($table, array $data = [], string $connection = nul
 /**
  * Determine if the argument is a soft deletable model.
  *
- * @param mixed $model
+ * @param  mixed  $model
  */
 function isSoftDeletableModel($model): bool
 {
@@ -115,8 +112,7 @@ function getConnection(string $connection = null): Connection
 /**
  * Seed a given database connection.
  *
- * @param array|string $class
- *
+ * @param  array|string  $class
  * @return TestCase
  */
 function seed($class = 'Database\\Seeders\\DatabaseSeeder')

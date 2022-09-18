@@ -9,8 +9,7 @@ use DateTimeInterface;
 /**
  * Begin travelling to another time.
  *
- * @param int $value
- *
+ * @param  int  $value
  * @return \Illuminate\Foundation\Testing\Wormhole
  */
 function travel($value)
@@ -21,8 +20,7 @@ function travel($value)
 /**
  * Travel to another time.
  *
- * @param callable|null $callback
- *
+ * @param  callable|null  $callback
  * @return mixed
  */
 function travelTo(DateTimeInterface $date, $callback = null)
