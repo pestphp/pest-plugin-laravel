@@ -57,13 +57,14 @@ final class PestTestCommand extends Command
         }
 
         if (File::exists($target) && ! (bool) $this->option('force')) {
-            $this->components->error(sprintf('[%s] already exist', $target));
+            $this->components->warn(sprintf('[%s] already exist', $target));
 
             return 1;
         }
 
         $contents = File::get(implode(DIRECTORY_SEPARATOR, [
-            dirname(__DIR__, 2),
+            dirname(__DIR__, 3),
+            'pest',
             'stubs',
             sprintf('%s.php', $type),
         ]));
@@ -74,7 +75,7 @@ final class PestTestCommand extends Command
         File::put($target, str_replace('{name}', $name, $contents));
         $message = sprintf('[%s] created successfully.', $relativePath);
 
-        $this->output->success($message);
+        $this->components->info($message);
 
         return 0;
     }

@@ -34,7 +34,7 @@ final class PestDatasetCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle(): void
+    public function handle(): int
     {
         /** @var string $testDirectory */
         $testDirectory = $this->option('test-directory');
@@ -44,12 +44,14 @@ final class PestDatasetCommand extends Command
         /** @var string $name */
         $name = $this->argument('name');
 
-        $relativePath = sprintf(testDirectory('DatasetsRepository/%s.php'), ucfirst($name));
+        $relativePath = sprintf(testDirectory('Datasets/%s.php'), ucfirst($name));
 
         $target = base_path($relativePath);
 
         if (File::exists($target)) {
-            throw new InvalidConsoleArgument(sprintf('[%s] already exist', $target));
+            $this->components->warn(sprintf('[%s] already exist', $target));
+
+            return 1;
         }
 
         if (! File::exists(dirname($relativePath))) {
@@ -57,7 +59,8 @@ final class PestDatasetCommand extends Command
         }
 
         $contents = File::get(implode(DIRECTORY_SEPARATOR, [
-            dirname(__DIR__, 2),
+            dirname(__DIR__, 3),
+            'pest',
             'stubs',
             'Dataset.php',
         ]));
@@ -71,5 +74,7 @@ final class PestDatasetCommand extends Command
         $message = sprintf('[%s] created successfully.', $relativePath);
 
         $this->components->info($message);
+
+        return 0;
     }
 }
