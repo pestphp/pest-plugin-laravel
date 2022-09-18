@@ -1,6 +1,7 @@
 <?php
 
 use function Pest\Laravel\assertModelMissing;
+
 use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\User;
 use Tests\TestCase;

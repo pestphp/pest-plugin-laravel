@@ -1,6 +1,7 @@
 <?php
 
 use function Pest\Laravel\assertDatabaseHas;
+
 use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\User;
 
