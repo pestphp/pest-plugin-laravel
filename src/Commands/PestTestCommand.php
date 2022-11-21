@@ -41,6 +41,9 @@ final class PestTestCommand extends Command
 
         /** @var string $name */
         $name = $this->argument('name');
+        if(str_ends_with($name, '.php')) {
+            $name = substr($name,0, -4);
+        }
 
         $type = ((bool) $this->option('unit')) ? 'Unit' : (((bool) $this->option('dusk')) ? 'Browser' : 'Feature');
 
