@@ -7,6 +7,28 @@ namespace Pest\Laravel;
 use DateTimeInterface;
 
 /**
+ * Freeze time.
+ *
+ * @param  callable|null  $callback
+ * @return mixed
+ */
+function freezeTime($callback = null)
+{
+    return test()->freezeTime($callback);
+}
+
+/**
+ * Freeze time at the beginning of the current second.
+ *
+ * @param  callable|null  $callback
+ * @return mixed
+ */
+function freezeSecond($callback = null)
+{
+    return test()->freezeSecond($callback);
+}
+
+/**
  * Begin travelling to another time.
  *
  * @param  int  $value
