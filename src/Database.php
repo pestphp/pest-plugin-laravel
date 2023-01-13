@@ -29,6 +29,16 @@ function assertDatabaseMissing(string $table, array $data, string $connection = 
 }
 
 /**
+ * Assert that the given table has no entries.
+ *
+ * @return TestCase
+ */
+function assertDatabaseEmpty(string $table, string $connection = null)
+{
+    return test()->assertDatabaseEmpty(...func_get_args());
+}
+
+/**
  * Assert the given model exists in the database.
  *
  * @return TestCase
