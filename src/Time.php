@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Pest\Laravel;
 
-use DateTimeInterface;
-
 /**
  * Begin travelling to another time.
  *
@@ -25,7 +23,7 @@ function travel($value)
  *
  * @return mixed
  */
-function travelTo(DateTimeInterface $date, $callback = null)
+function travelTo(\DateTimeInterface $date, $callback = null)
 {
     return test()->travelTo(...func_get_args());
 }
