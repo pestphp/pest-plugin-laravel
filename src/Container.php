@@ -59,11 +59,31 @@ function withoutMix()
 }
 
 /**
- * Register an empty handler for Laravel Mix in the container.
+ * Restore Laravel Mix in the container.
  *
  * @return TestCase
  */
 function withMix()
 {
     return test()->withMix(...func_get_args());
+}
+
+/**
+ * Register an empty handler for Vite in the container.
+ *
+ * @return TestCase
+ */
+function withoutVite()
+{
+    return test()->withoutVite(...func_get_args());
+}
+
+/**
+ * Restore Vite in the container.
+ *
+ * @return TestCase
+ */
+function withVite()
+{
+    return test()->withVite(...func_get_args());
 }
