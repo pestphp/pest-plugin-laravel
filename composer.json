@@ -32,7 +32,7 @@
     "require-dev": {
         "laravel/dusk": "^7.5.0",
         "orchestra/testbench": "^8.0.0",
-        "pestphp/pest-dev-tools": "^2.2.0"
+        "pestphp/pest-dev-tools": "^2.3.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
