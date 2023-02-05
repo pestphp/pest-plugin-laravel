@@ -69,17 +69,6 @@ function assertDatabaseCount(string $table, int $count, string $connection = nul
 }
 
 /**
- * Assert the given record has been deleted.
- *
- * @param  Model|string  $table
- * @return TestCase
- */
-function assertDeleted($table, array $data = [], string $connection = null)
-{
-    return test()->assertDeleted(...func_get_args());
-}
-
-/**
  * Assert the given record has been "soft deleted".
  *
  * @param  Model|string  $table
