@@ -118,3 +118,8 @@ function seed($class = 'Database\\Seeders\\DatabaseSeeder')
 {
     return test()->seed(...func_get_args());
 }
+
+function expectsDatabaseQueryCount(int $excepted)
+{
+    return test()->expectsDatabaseQueryCount($excepted);
+}
