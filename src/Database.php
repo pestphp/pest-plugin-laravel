@@ -123,7 +123,7 @@ function seed($class = 'Database\\Seeders\\DatabaseSeeder')
  * Specify the number of database queries that should occur throughout the test.
  *
  * @param  int  $excepted
- * @param  $connection
+ * @param  string|null  $connection
  * @return TestCase
  */
 function expectsDatabaseQueryCount(int $excepted, $connection = null)
