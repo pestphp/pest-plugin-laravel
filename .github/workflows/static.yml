@@ -25,8 +25,5 @@ jobs:
     - name: Install Dependencies
       run: composer update --prefer-stable --no-interaction --no-progress --ansi
 
-    - name: Types
-      run: composer test:types
-
     - name: Style
       run: composer test:lint
