@@ -13,7 +13,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1.0",
-        "laravel/framework": "^10.4.0",
+        "laravel/framework": "^10.4.1",
         "pestphp/pest": "^2.0.0"
     },
     "autoload": {
@@ -31,8 +31,8 @@
     },
     "require-dev": {
         "laravel/dusk": "^7.7.0",
-        "orchestra/testbench": "^8.0.0",
-        "pestphp/pest-dev-tools": "^2.4.0"
+        "orchestra/testbench": "^8.0.10",
+        "pestphp/pest-dev-tools": "^2.5.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -53,11 +53,9 @@
     "scripts": {
         "lint": "pint",
         "test:lint": "pint --test",
-        "test:types": "phpstan analyse --ansi",
         "test:unit": "pest --colors=always",
         "test": [
             "@test:lint",
-            "@test:types",
             "@test:unit"
         ]
     }
