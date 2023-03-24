@@ -118,3 +118,15 @@ function seed($class = 'Database\\Seeders\\DatabaseSeeder')
 {
     return test()->seed(...func_get_args());
 }
+
+/**
+ * Specify the number of database queries that should occur throughout the test.
+ *
+ * @param  int  $excepted
+ * @param  string|null  $connection
+ * @return TestCase
+ */
+function expectsDatabaseQueryCount(int $excepted, string|null $connection = null)
+{
+    return test()->expectsDatabaseQueryCount($excepted, $connection);
+}
