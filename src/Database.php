@@ -126,7 +126,7 @@ function seed($class = 'Database\\Seeders\\DatabaseSeeder')
  * @param  string|null  $connection
  * @return TestCase
  */
-function expectsDatabaseQueryCount(int $excepted, $connection = null)
+function expectsDatabaseQueryCount(int $excepted, string|null $connection = null)
 {
     return test()->expectsDatabaseQueryCount($excepted, $connection);
 }
