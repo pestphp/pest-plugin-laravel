@@ -45,7 +45,7 @@ function assertDatabaseEmpty(string $table, string $connection = null)
  */
 function assertModelExists(Model $model)
 {
-    return test()->assertModelExists($model);
+    return test()->assertModelExists(...func_get_args());
 }
 
 /**
@@ -55,7 +55,7 @@ function assertModelExists(Model $model)
  */
 function assertModelMissing(Model $model)
 {
-    return test()->assertModelMissing($model);
+    return test()->assertModelMissing(...func_get_args());
 }
 
 /**
@@ -111,10 +111,9 @@ function getConnection(string $connection = null): Connection
 /**
  * Seed a given database connection.
  *
- * @param  array|string  $class
  * @return TestCase
  */
-function seed($class = 'Database\\Seeders\\DatabaseSeeder')
+function seed(array|string $class = 'Database\\Seeders\\DatabaseSeeder')
 {
     return test()->seed(...func_get_args());
 }
@@ -122,11 +121,9 @@ function seed($class = 'Database\\Seeders\\DatabaseSeeder')
 /**
  * Specify the number of database queries that should occur throughout the test.
  *
- * @param  int  $excepted
- * @param  string|null  $connection
  * @return TestCase
  */
 function expectsDatabaseQueryCount(int $excepted, string|null $connection = null)
 {
-    return test()->expectsDatabaseQueryCount($excepted, $connection);
+    return test()->expectsDatabaseQueryCount(...func_get_args());
 }
