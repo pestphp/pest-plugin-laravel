@@ -28,6 +28,16 @@ function withHeader(string $name, string $value)
 }
 
 /**
+ *  Add an authorization token for the request.
+ *
+ * @return TestCase
+ */
+function withToken(string $token, string $type = 'Bearer')
+{
+    return test()->withToken(...func_get_args());
+}
+
+/**
  * Flush all the configured headers.
  *
  * @return TestCase
