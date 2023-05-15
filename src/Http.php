@@ -38,6 +38,16 @@ function withToken(string $token, string $type = 'Bearer')
 }
 
 /**
+ *  Add an authorization token for the request.
+ *
+ * @return TestCase
+ */
+function withoutToken()
+{
+    return test()->withoutToken();
+}
+
+/**
  * Flush all the configured headers.
  *
  * @return TestCase
