@@ -38,6 +38,16 @@ function withToken(string $token, string $type = 'Bearer')
 }
 
 /**
+ *  Remove the authorization token from the request.
+ *
+ * @return TestCase
+ */
+function withoutToken()
+{
+    return test()->withoutToken();
+}
+
+/**
  * Flush all the configured headers.
  *
  * @return TestCase
