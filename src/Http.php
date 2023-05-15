@@ -38,7 +38,7 @@ function withToken(string $token, string $type = 'Bearer')
 }
 
 /**
- *  Add an authorization token for the request.
+ *  Remove the authorization token from the request.
  *
  * @return TestCase
  */
