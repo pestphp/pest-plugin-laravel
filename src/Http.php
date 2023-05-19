@@ -280,7 +280,7 @@ function optionsJson(string $uri, array $data = [], array $headers = [])
 }
 
 /**
- * Call the given URI with a JSON request.
+ * Visit the given URI with a HEAD request.
  *
  * @return TestResponse
  */
