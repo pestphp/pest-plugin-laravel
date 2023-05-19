@@ -322,16 +322,9 @@ function json(string $method, string $uri, array $data = [], array $headers = []
 /**
  * Call the given URI and return the Response.
  *
- * @param  string  $method
- * @param  string  $uri
- * @param  array  $parameters
- * @param  array  $cookies
- * @param  array  $files
- * @param  array  $server
- * @param  string|null  $content
  * @return TestResponse
  */
-function call($method, $uri, $parameters = [], $cookies = [], $files = [], $server = [], $content = null)
+function call(string $method, string $uri, array $parameters = [], array $cookies = [], array $files = [], array $server = [], string|null $content = null)
 {
     return test()->call(...func_get_args());
 }
