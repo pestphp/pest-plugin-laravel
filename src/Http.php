@@ -284,6 +284,16 @@ function optionsJson(string $uri, array $data = [], array $headers = [])
  *
  * @return TestResponse
  */
+function head(string $uri, array $headers = [])
+{
+    return test()->head(...func_get_args());
+}
+
+/**
+ * Call the given URI with a JSON request.
+ *
+ * @return TestResponse
+ */
 function json(string $method, string $uri, array $data = [], array $headers = [])
 {
     return test()->json(...func_get_args());
