@@ -150,6 +150,16 @@ function followingRedirects()
 }
 
 /**
+ * Include cookies and authorization headers for JSON requests.
+ *
+ * @return TestCase
+ */
+function withCredentials()
+{
+    return test()->withCredentials(...func_get_args());
+}
+
+/**
  * Disable automatic encryption of cookie values.
  *
  * @return TestCase
