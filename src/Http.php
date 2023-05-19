@@ -38,6 +38,16 @@ function withToken(string $token, string $type = 'Bearer')
 }
 
 /**
+ * Add a basic authentication header to the request with the given credentials.
+ *
+ * @return TestCase
+ */
+function withBasicAuth(string $username, string $password)
+{
+    return test()->withBasicAuth(...func_get_args());
+}
+
+/**
  *  Remove the authorization token from the request.
  *
  * @return TestCase
