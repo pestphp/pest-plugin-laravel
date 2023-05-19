@@ -300,6 +300,16 @@ function optionsJson(string $uri, array $data = [], array $headers = [])
 }
 
 /**
+ * Visit the given URI with a HEAD request.
+ *
+ * @return TestResponse
+ */
+function head(string $uri, array $headers = [])
+{
+    return test()->head(...func_get_args());
+}
+
+/**
  * Call the given URI with a JSON request.
  *
  * @return TestResponse
