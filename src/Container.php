@@ -75,7 +75,7 @@ function withMix()
  */
 function withoutVite()
 {
-    return test()->withoutVite(...func_get_args());
+    return test()->withoutVite();
 }
 
 /**
