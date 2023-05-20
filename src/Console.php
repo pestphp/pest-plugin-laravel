@@ -24,5 +24,5 @@ function artisan(string $command, array $parameters = [])
  */
 function withoutMockingConsoleOutput()
 {
-    return test()->withoutMockingConsoleOutput(...func_get_args());
+    return test()->withoutMockingConsoleOutput();
 }
