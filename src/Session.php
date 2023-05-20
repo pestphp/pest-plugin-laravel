@@ -33,7 +33,7 @@ function session(array $data)
  */
 function startSession()
 {
-    return test()->startSession(...func_get_args());
+    return test()->startSession();
 }
 
 /**
@@ -43,5 +43,5 @@ function startSession()
  */
 function flushSession()
 {
-    return test()->flushSession(...func_get_args());
+    return test()->flushSession();
 }
