@@ -55,7 +55,7 @@ function spy(string $abstract, Closure $mock = null): MockInterface
  */
 function withoutMix()
 {
-    return test()->withoutMix(...func_get_args());
+    return test()->withoutMix();
 }
 
 /**
