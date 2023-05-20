@@ -13,7 +13,7 @@ use Illuminate\Foundation\Testing\TestCase;
  */
 function withExceptionHandling()
 {
-    return test()->withExceptionHandling(...func_get_args());
+    return test()->withExceptionHandling();
 }
 
 /**
