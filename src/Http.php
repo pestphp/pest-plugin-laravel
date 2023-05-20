@@ -64,7 +64,7 @@ function withoutToken()
  */
 function flushHeaders()
 {
-    return test()->flushHeaders(...func_get_args());
+    return test()->flushHeaders();
 }
 
 /**
