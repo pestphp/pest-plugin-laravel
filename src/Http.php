@@ -156,7 +156,7 @@ function followingRedirects()
  */
 function withCredentials()
 {
-    return test()->withCredentials(...func_get_args());
+    return test()->withCredentials();
 }
 
 /**
