@@ -85,5 +85,5 @@ function withoutVite()
  */
 function withVite()
 {
-    return test()->withVite(...func_get_args());
+    return test()->withVite();
 }
