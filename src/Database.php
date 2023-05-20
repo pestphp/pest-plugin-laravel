@@ -129,7 +129,7 @@ function expectsDatabaseQueryCount(int $excepted, string|null $connection = null
 }
 
 /**
- *Cast a JSON string to a database compatible type.
+ * Cast a JSON string to a database compatible type.
  *
  * @return TestCase
  */
