@@ -133,7 +133,7 @@ function expectsDatabaseQueryCount(int $excepted, string|null $connection = null
  *
  * @return TestCase
  */
-function castAsJson($value)
+function castAsJson(array|object|string $value)
 {
     return test()->castAsJson($value);
 }
