@@ -33,7 +33,7 @@ function handleExceptions(array $exceptions)
  */
 function handleValidationExceptions()
 {
-    return test()->handleValidationExceptions(...func_get_args());
+    return test()->handleValidationExceptions();
 }
 
 /**
