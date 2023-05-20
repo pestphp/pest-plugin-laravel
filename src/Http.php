@@ -166,7 +166,7 @@ function withCredentials()
  */
 function disableCookieEncryption()
 {
-    return test()->disableCookieEncryption(...func_get_args());
+    return test()->disableCookieEncryption();
 }
 
 /**
