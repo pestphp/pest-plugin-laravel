@@ -57,5 +57,5 @@ function travelTo(DateTimeInterface $date, $callback = null)
  */
 function travelBack()
 {
-    return test()->travelBack(...func_get_args());
+    return test()->travelBack();
 }
