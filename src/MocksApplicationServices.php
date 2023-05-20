@@ -119,7 +119,7 @@ function wasDispatched(string $needle, array $haystack): bool
  */
 function withoutNotifications()
 {
-    return test()->withoutNotifications(...func_get_args());
+    return test()->withoutNotifications();
 }
 
 /**
