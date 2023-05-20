@@ -146,7 +146,7 @@ function withUnencryptedCookie(string $name, string $value)
  */
 function followingRedirects()
 {
-    return test()->followingRedirects(...func_get_args());
+    return test()->followingRedirects();
 }
 
 /**
