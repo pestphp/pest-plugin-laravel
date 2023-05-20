@@ -65,7 +65,7 @@ function withoutMix()
  */
 function withMix()
 {
-    return test()->withMix(...func_get_args());
+    return test()->withMix();
 }
 
 /**
