@@ -123,7 +123,7 @@ function seed(array|string $class = 'Database\\Seeders\\DatabaseSeeder')
  *
  * @return TestCase
  */
-function expectsDatabaseQueryCount(int $excepted, string|null $connection = null)
+function expectsDatabaseQueryCount(int $excepted, string $connection = null)
 {
     return test()->expectsDatabaseQueryCount(...func_get_args());
 }
