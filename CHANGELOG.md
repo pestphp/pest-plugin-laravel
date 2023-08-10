@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [v2.2.0 (2023-08-10)](https://github.com/pestphp/plugin-laravel/compare/v2.1.0...v2.2.0)
+
+### Added
+
+## Laravel 11 support
+
 ## [v2.1.0 (2023-07-18)](https://github.com/pestphp/plugin-laravel/compare/v2.0.0...v2.1.0)
 
 ### Added
