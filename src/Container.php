@@ -49,6 +49,16 @@ function spy(string $abstract, Closure $mock = null): MockInterface
 }
 
 /**
+ * Instruct the container to forget a previously mocked / spied instance of an object.
+ *
+ * @return TestCase
+ */
+function forgetMock(string $abstract)
+{
+    return test()->forgetMock(...func_get_args());
+}
+
+/**
  * Register an empty handler for Laravel Mix in the container.
  *
  * @return TestCase
