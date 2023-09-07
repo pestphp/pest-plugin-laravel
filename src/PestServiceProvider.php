@@ -37,7 +37,7 @@ final class PestServiceProvider extends ServiceProvider
         });
 
         Snapshot::macro('laravel.csrf', function (string $value) {
-            return preg_replace('/name = \'_token\' value = \'([0-9a-zA-Z]*)\'/', 'name = \'_token\' value = \'...\'', $value);
+            return preg_replace('/name = "_token" value = "[0-9a-zA-Z]*"/', 'name = "_token" value = "..."', $value);
         });
     }
 }
