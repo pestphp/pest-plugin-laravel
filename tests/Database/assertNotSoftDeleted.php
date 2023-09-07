@@ -1,9 +1,10 @@
 <?php
 
-use function Pest\Laravel\assertNotSoftDeleted;
 use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\SoftDeletableUser;
 use Tests\TestCase;
+
+use function Pest\Laravel\assertNotSoftDeleted;
 
 test('pass', function () {
     if (! method_exists(TestCase::class, 'assertModelExists')) {

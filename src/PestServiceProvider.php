@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Pest\Laravel;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Testing\TestResponse;
 use Laravel\Dusk\Console\DuskCommand;
 use Pest\Laravel\Commands\PestDatasetCommand;
 use Pest\Laravel\Commands\PestDuskCommand;
 use Pest\Laravel\Commands\PestTestCommand;
+use Pest\Plugins\Snapshot;
 
 final class PestServiceProvider extends ServiceProvider
 {
@@ -29,5 +31,13 @@ final class PestServiceProvider extends ServiceProvider
                 ]);
             }
         }
+
+        Snapshot::intercept(TestResponse::class, function (TestResponse $response): string {
+            return $response->getContent();
+        });
+
+        Snapshot::macro('laravel.csrf', function (string $value) {
+            return preg_replace('/name = \'_token\' value = \'([0-9a-zA-Z]*)\'/', 'name = \'_token\' value = \'...\'', $value);
+        });
     }
 }

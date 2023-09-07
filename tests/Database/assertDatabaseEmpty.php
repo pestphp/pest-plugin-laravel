@@ -1,8 +1,9 @@
 <?php
 
-use function Pest\Laravel\assertDatabaseEmpty;
 use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\User;
+
+use function Pest\Laravel\assertDatabaseEmpty;
 
 test('pass', function () {
     assertDatabaseEmpty('users');

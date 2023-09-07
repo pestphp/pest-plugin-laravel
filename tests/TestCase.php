@@ -3,12 +3,16 @@
 namespace Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use Pest\Laravel\PestServiceProvider;
 
 class TestCase extends BaseTestCase
 {
     protected function getPackageProviders($app)
     {
-        return [TestServiceProvider::class];
+        return [
+            TestServiceProvider::class,
+            PestServiceProvider::class,
+        ];
     }
 
     /**

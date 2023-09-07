@@ -1,8 +1,9 @@
 <?php
 
-use function Pest\Laravel\assertDatabaseCount;
 use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\User;
+
+use function Pest\Laravel\assertDatabaseCount;
 
 test('pass', function () {
     assertDatabaseCount('users', 0);
