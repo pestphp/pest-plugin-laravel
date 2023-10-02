@@ -127,3 +127,8 @@ function expectsDatabaseQueryCount(int $excepted, string $connection = null)
 {
     return test()->expectsDatabaseQueryCount(...func_get_args());
 }
+
+function assertModelIs(Model $expect, Model $model)
+{
+    return test()->assertTrue($model->is($expect));
+}
