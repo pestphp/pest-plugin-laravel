@@ -1,8 +1,9 @@
 <?php
 
-use function Pest\Laravel\assertDatabaseHas;
 use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Models\User;
+
+use function Pest\Laravel\assertDatabaseHas;
 
 test('pass', function () {
     $user = User::create([
