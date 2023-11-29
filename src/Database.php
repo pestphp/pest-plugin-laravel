@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Pest\Laravel;
 
+use Illuminate\Contracts\Database\Query\Expression;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\TestCase;
@@ -98,6 +99,16 @@ function assertNotSoftDeleted($table, array $data = [], string $connection = nul
 function isSoftDeletableModel($model): bool
 {
     return test()->isSoftDeletableModel(...func_get_args());
+}
+
+/**
+ * Cast a JSON string to a database compatible type.
+ *
+ * @param  array|object|string  $value
+ */
+function castAsJson($value): Expression
+{
+    return test()->castAsJson(...func_get_args());
 }
 
 /**
