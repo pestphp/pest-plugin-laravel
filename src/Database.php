@@ -127,3 +127,13 @@ function expectsDatabaseQueryCount(int $excepted, string $connection = null)
 {
     return test()->expectsDatabaseQueryCount(...func_get_args());
 }
+
+/**
+ * Cast a JSON string to a database compatible type.
+ *
+ * @return TestCase
+ */
+function castAsJson(array|object|string $value)
+{
+    return test()->castAsJson($value);
+}
