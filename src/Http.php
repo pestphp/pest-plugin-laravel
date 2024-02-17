@@ -324,7 +324,7 @@ function json(string $method, string $uri, array $data = [], array $headers = []
  *
  * @return TestResponse
  */
-function call(string $method, string $uri, array $parameters = [], array $cookies = [], array $files = [], array $server = [], string $content = null)
+function call(string $method, string $uri, array $parameters = [], array $cookies = [], array $files = [], array $server = [], ?string $content = null)
 {
     return test()->call(...func_get_args());
 }

@@ -13,7 +13,7 @@ use Illuminate\Foundation\Testing\TestCase;
  *
  * @return TestCase
  */
-function assertDatabaseHas(string $table, array $data, string $connection = null)
+function assertDatabaseHas(string $table, array $data, ?string $connection = null)
 {
     return test()->assertDatabaseHas(...func_get_args());
 }
@@ -23,7 +23,7 @@ function assertDatabaseHas(string $table, array $data, string $connection = null
  *
  * @return TestCase
  */
-function assertDatabaseMissing(string $table, array $data, string $connection = null)
+function assertDatabaseMissing(string $table, array $data, ?string $connection = null)
 {
     return test()->assertDatabaseMissing(...func_get_args());
 }
@@ -33,7 +33,7 @@ function assertDatabaseMissing(string $table, array $data, string $connection = 
  *
  * @return TestCase
  */
-function assertDatabaseEmpty(string $table, string $connection = null)
+function assertDatabaseEmpty(string $table, ?string $connection = null)
 {
     return test()->assertDatabaseEmpty(...func_get_args());
 }
@@ -63,7 +63,7 @@ function assertModelMissing(Model $model)
  *
  * @return TestCase
  */
-function assertDatabaseCount(string $table, int $count, string $connection = null)
+function assertDatabaseCount(string $table, int $count, ?string $connection = null)
 {
     return test()->assertDatabaseCount(...func_get_args());
 }
@@ -74,7 +74,7 @@ function assertDatabaseCount(string $table, int $count, string $connection = nul
  * @param  Model|string  $table
  * @return TestCase
  */
-function assertSoftDeleted($table, array $data = [], string $connection = null, string $deletedAtColumn = 'deleted_at')
+function assertSoftDeleted($table, array $data = [], ?string $connection = null, string $deletedAtColumn = 'deleted_at')
 {
     return test()->assertSoftDeleted(...func_get_args());
 }
@@ -85,7 +85,7 @@ function assertSoftDeleted($table, array $data = [], string $connection = null, 
  * @param  Model|string  $table
  * @return TestCase
  */
-function assertNotSoftDeleted($table, array $data = [], string $connection = null, string $deletedAtColumn = 'deleted_at')
+function assertNotSoftDeleted($table, array $data = [], ?string $connection = null, string $deletedAtColumn = 'deleted_at')
 {
     return test()->assertNotSoftDeleted(...func_get_args());
 }
@@ -103,7 +103,7 @@ function isSoftDeletableModel($model): bool
 /**
  * Get the database connection.
  */
-function getConnection(string $connection = null): Connection
+function getConnection(?string $connection = null): Connection
 {
     return test()->getConnection(...func_get_args());
 }
@@ -123,7 +123,7 @@ function seed(array|string $class = 'Database\\Seeders\\DatabaseSeeder')
  *
  * @return TestCase
  */
-function expectsDatabaseQueryCount(int $excepted, string $connection = null)
+function expectsDatabaseQueryCount(int $excepted, ?string $connection = null)
 {
     return test()->expectsDatabaseQueryCount(...func_get_args());
 }

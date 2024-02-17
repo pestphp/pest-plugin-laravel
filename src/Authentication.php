@@ -12,7 +12,7 @@ use Illuminate\Foundation\Testing\TestCase;
  *
  * @return TestCase
  */
-function actingAs(Authenticatable $user, string $driver = null)
+function actingAs(Authenticatable $user, ?string $driver = null)
 {
     return test()->actingAs(...func_get_args());
 }
@@ -22,7 +22,7 @@ function actingAs(Authenticatable $user, string $driver = null)
  *
  * @return TestCase
  */
-function be(Authenticatable $user, string $driver = null)
+function be(Authenticatable $user, ?string $driver = null)
 {
     return test()->be(...func_get_args());
 }
@@ -32,7 +32,7 @@ function be(Authenticatable $user, string $driver = null)
  *
  * @return TestCase
  */
-function assertAuthenticated(string $guard = null)
+function assertAuthenticated(?string $guard = null)
 {
     return test()->assertAuthenticated(...func_get_args());
 }
@@ -42,7 +42,7 @@ function assertAuthenticated(string $guard = null)
  *
  * @return TestCase
  */
-function assertGuest(string $guard = null)
+function assertGuest(?string $guard = null)
 {
     return test()->assertGuest(...func_get_args());
 }
@@ -52,7 +52,7 @@ function assertGuest(string $guard = null)
  *
  * @return bool
  */
-function isAuthenticated(string $guard = null)
+function isAuthenticated(?string $guard = null)
 {
     return test()->isAuthenticated(...func_get_args());
 }
@@ -62,7 +62,7 @@ function isAuthenticated(string $guard = null)
  *
  * @return TestCase
  */
-function assertAuthenticatedAs(Authenticatable $user, string $guard = null)
+function assertAuthenticatedAs(Authenticatable $user, ?string $guard = null)
 {
     return test()->assertAuthenticatedAs(...func_get_args());
 }
@@ -72,7 +72,7 @@ function assertAuthenticatedAs(Authenticatable $user, string $guard = null)
  *
  * @return TestCase
  */
-function assertCredentials(array $credentials, string $guard = null)
+function assertCredentials(array $credentials, ?string $guard = null)
 {
     return test()->assertCredentials(...func_get_args());
 }
@@ -82,7 +82,7 @@ function assertCredentials(array $credentials, string $guard = null)
  *
  * @return TestCase
  */
-function assertInvalidCredentials(array $credentials, string $guard = null)
+function assertInvalidCredentials(array $credentials, ?string $guard = null)
 {
     return test()->assertInvalidCredentials(...func_get_args());
 }
@@ -90,7 +90,7 @@ function assertInvalidCredentials(array $credentials, string $guard = null)
 /**
  * Return true if the credentials are valid, false otherwise.
  */
-function hasCredentials(array $credentials, string $guard = null): bool
+function hasCredentials(array $credentials, ?string $guard = null): bool
 {
     return test()->hasCredentials(...func_get_args());
 }
