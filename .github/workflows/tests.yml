@@ -13,6 +13,9 @@ jobs:
         laravel: ['10', '11']
         dependency-version: [prefer-lowest, prefer-stable]
         parallel: ['', '--parallel']
+        exclude:
+          - php: '8.1'
+            laravel: '11'
 
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.os }} - ${{ matrix.dependency-version }} - ${{ matrix.parallel }}
 
