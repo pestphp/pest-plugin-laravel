@@ -9,7 +9,6 @@
         'ExceptionHandling.php',
         'Expectations.php',
         'Http.php',
-        'MocksApplicationServices.php',
         'Session.php',
         'Time.php',
     ];
