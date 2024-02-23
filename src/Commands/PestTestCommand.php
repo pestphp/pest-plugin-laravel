@@ -15,6 +15,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use function Laravel\Prompts\select;
 use function Pest\testDirectory;
 
+use function Pest\testDirectory;
+
 /**
  * @internal
  */
