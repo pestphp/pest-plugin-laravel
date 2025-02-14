@@ -19,6 +19,18 @@ function assertDatabaseHas($table, array $data = [], ?string $connection = null)
 }
 
 /**
+ * Assert that multiple given where conditions exists in the database.
+ *
+ * @return void
+ */
+function assertDatabaseHasMany($table, array $data = [], ?string $connection = null)
+{
+    foreach ($data as $row) {
+        assertDatabaseHas($table, $row, $connection);
+    }
+}
+
+/**
  * Assert that a given where condition does not exist in the database.
  *
  * @return TestCase
