@@ -9,8 +9,8 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: ['8.2', '8.3', '8.4']
-        laravel: ['10', '11', '12']
+        php: ['8.3', '8.4']
+        laravel: ['12']
         dependency-version: [prefer-lowest, prefer-stable]
         parallel: ['', '--parallel']
 
@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
