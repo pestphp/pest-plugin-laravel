@@ -18,6 +18,16 @@ function actingAs(Authenticatable $user, ?string $driver = null)
 }
 
 /**
+ * Clear the currently logged in user for the application.
+ *
+ * @return TestCase
+ */
+function actingAsGuest(?string $guard = null)
+{
+    return test()->actingAsGuest(...func_get_args());
+}
+
+/**
  * Set the currently logged in user for the application.
  *
  * @return TestCase
