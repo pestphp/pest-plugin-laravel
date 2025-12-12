@@ -30,12 +30,10 @@ expect()->extend('toBeModel', function (): Expectation {
 expect()->extend('toHaveModelAttribute', function (string $name, mixed $value = new Any, string $message = ''): Expectation {
     $this->toBeModel();
 
-    // @phpstan-ignore-next-line
-    Assert::assertTrue($this->value->hasAttribute($name), $message);
-
-    if (! $value instanceof Any) {
-        // @phpstan-ignore-next-line
-        Assert::assertEquals($value, $this->value->getAttribute($name), $message);
+    if ($value instanceof Any) {
+        Assert::assertTrue($this->value->hasAttribute($name), $message); // @phpstan-ignore-line
+    } else {
+        Assert::assertEquals($value, $this->value->getAttribute($name), $message); // @phpstan-ignore-line
     }
 
     return $this;
