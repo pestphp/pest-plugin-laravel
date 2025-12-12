@@ -27,7 +27,7 @@ expect()->extend('toBeModel', function (): Expectation {
 /**
  * Asserts that the value is an Eloquent model with the given attribute and an optional value.
  */
-expect()->extend('toHaveAttribute', function (string $name, mixed $value = new Any, string $message = '') {
+expect()->extend('toHaveModelAttribute', function (string $name, mixed $value = new Any, string $message = ''): Expectation {
     $this->toBeModel();
 
     // @phpstan-ignore-next-line
@@ -44,9 +44,9 @@ expect()->extend('toHaveAttribute', function (string $name, mixed $value = new A
 /**
  * Asserts that the value is an Eloquent model with the given attributes and optional values.
  */
-expect()->extend('toHaveAttributes', function (iterable $names, string $message = '') {
+expect()->extend('toHaveModelAttributes', function (iterable $names, string $message = ''): Expectation {
     foreach ($names as $name => $value) {
-        is_int($name) ? $this->toHaveAttribute($value, message: $message) : $this->toHaveAttribute($name, $value, $message); // @phpstan-ignore-line
+        is_int($name) ? $this->toHaveModelAttribute($value, message: $message) : $this->toHaveModelAttribute($name, $value, $message); // @phpstan-ignore-line
     }
 
     return $this;
