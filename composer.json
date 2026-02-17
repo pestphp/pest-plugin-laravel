@@ -12,7 +12,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.3.0",
+        "php": "^8.4",
         "laravel/framework": "^11.45.2|^12.25.0",
         "pestphp/pest": "^4.0.0"
     },
