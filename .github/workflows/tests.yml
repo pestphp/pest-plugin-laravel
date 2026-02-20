@@ -1,47 +1,50 @@
 name: Tests
 
-on: ['push', 'pull_request']
+on:
+  - push
+  - pull_request
 
 jobs:
   ci:
     runs-on: ${{ matrix.os }}
+
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
         php: ['8.3', '8.4']
-        laravel: ['11', '12']
+        laravel: ['11', '12', '13']
         dependency-version: [prefer-lowest, prefer-stable]
         parallel: ['', '--parallel']
 
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.os }} - ${{ matrix.dependency-version }} - ${{ matrix.parallel }}
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-        extensions: zip, fileinfo
-        tools: composer:v2
-        coverage: none
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: zip, fileinfo
+          tools: composer:v2
+          coverage: none
 
-    - name: Setup Problem Matches
-      run: |
-        echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-        echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+      - name: Setup Problem Matches
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
-    - name: Set Minimum PHP 8.4 Versions
-      run: composer require nesbot/carbon:^3.4 --no-interaction --no-update
-      if: matrix.php >= 8.4
+      - name: Set Minimum PHP 8.4 Versions
+        run: composer require nesbot/carbon:^3.4 --no-interaction --no-update
+        if: 'matrix.php >= 8.4'
 
-    - name: Install PHP dependencies
-      run: composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
+      - name: Install PHP dependencies
+        run: composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
 
-    - name: Unit Tests
-      run: composer test:unit
+      - name: Unit Tests
+        run: composer test:unit
 
-    - name: Unit Options Tests
-      run: composer test:unit:options
+      - name: Unit Options Tests
+        run: composer test:unit:options
