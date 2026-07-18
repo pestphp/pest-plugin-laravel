@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Pest\Laravel;
 
+use Illuminate\Foundation\Testing\Wormhole;
+use Illuminate\Support\Carbon;
+
 /**
  * Freeze time.
  *
@@ -30,7 +33,7 @@ function freezeSecond($callback = null)
  * Begin travelling to another time.
  *
  * @param  int  $value
- * @return \Illuminate\Foundation\Testing\Wormhole
+ * @return Wormhole
  */
 function travel($value)
 {
@@ -40,7 +43,7 @@ function travel($value)
 /**
  * Travel to another time.
  *
- * @param  \DateTimeInterface|\Closure|\Illuminate\Support\Carbon|string|bool|null  $date
+ * @param  \DateTimeInterface|\Closure|Carbon|string|bool|null  $date
  * @param  callable|null  $callback
  * @return mixed
  */

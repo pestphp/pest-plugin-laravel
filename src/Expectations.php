@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Pest\Laravel;
 
+use Illuminate\Support\Collection;
 use Pest\Expectation;
 
 /*
@@ -11,5 +12,5 @@ use Pest\Expectation;
  */
 expect()->extend('toBeCollection', function (): Expectation {
     // @phpstan-ignore-next-line
-    return $this->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    return $this->toBeInstanceOf(Collection::class);
 });
