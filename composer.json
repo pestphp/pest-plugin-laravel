@@ -34,6 +34,9 @@
         "orchestra/testbench": "^9.13.0|^10.5.0|^11.1",
         "pestphp/pest-dev-tools": "^5.0.0"
     },
+    "conflict": {
+        "pestphp/pest": "<5.0.0"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
