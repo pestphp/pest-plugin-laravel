@@ -13,7 +13,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "laravel/framework": "^11.45.2|^12.25.0|^13.20.0",
+        "laravel/framework": "^13.20.0",
         "pestphp/pest": "^5.0.0"
     },
     "autoload": {
@@ -31,7 +31,7 @@
     },
     "require-dev": {
         "laravel/dusk": "^8.6.0",
-        "orchestra/testbench": "^9.13.0|^10.5.0|^11.1",
+        "orchestra/testbench": "^11.1",
         "pestphp/pest-dev-tools": "^5.0.0"
     },
     "conflict": {
