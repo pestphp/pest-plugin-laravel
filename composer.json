@@ -13,8 +13,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "laravel/framework": "^13.20.0",
-        "pestphp/pest": "^5.0.0"
+        "laravel/framework": "^13.23.0",
+        "pestphp/pest": "^5.0.1"
     },
     "autoload": {
         "psr-4": {
