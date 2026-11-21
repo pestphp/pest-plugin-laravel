@@ -42,7 +42,9 @@ jobs:
         if: matrix.php >= 8.4
 
       - name: Install PHP dependencies
-        run: composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
+        run: >
+          composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
+          ${{ matrix.php == '8.6' && '--with=laravel/framework:^13.32.0 --with=nesbot/carbon:^3.14.0' || '' }}
 
       - name: Unit Tests
         run: composer test:unit
