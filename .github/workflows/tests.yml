@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: ['8.4', '8.5']
+        php: ['8.4', '8.5', '8.6']
         laravel: ['13']
         dependency-version: [prefer-lowest, prefer-stable]
         parallel: ['', '--parallel']
@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: ${{ matrix.php }}
           extensions: zip, fileinfo
@@ -42,7 +42,9 @@ jobs:
         if: matrix.php >= 8.4
 
       - name: Install PHP dependencies
-        run: composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
+        run: >
+          composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
+          ${{ matrix.php == '8.6' && '--with=laravel/framework:^13.32.0 --with=nesbot/carbon:^3.14.0' || '' }}
 
       - name: Unit Tests
         run: composer test:unit
